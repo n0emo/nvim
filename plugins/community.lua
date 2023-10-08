@@ -6,5 +6,6 @@ return {
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.cpp" },
 
-  { import = "astrocommunity.colorscheme.catppuccin" }
-}
+  { import = "astrocommunity.colorscheme.catppuccin" },
+  { import = "astrocommunity.colorscheme.kanagawa-nvim" },
+  }
