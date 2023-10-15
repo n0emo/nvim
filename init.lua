@@ -17,44 +17,65 @@ return {
     },
   },
 
-  -- Set colorscheme to use
-
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
     virtual_text = true,
     underline = true,
+    inlayHints = true,
   },
 
   lsp = {
-    -- customize lsp formatting options
-    formatting = {
-      -- control auto formatting on save
-      format_on_save = {
-        enabled = false, -- enable or disable format on save globally
-        allow_filetypes = { -- enable format on save for specified filetypes only
-          "lua",
-        },
-        ignore_filetypes = { -- disable format on save for specified filetypes
-          -- "python",
-        },
+    config = {
+      hint = {
+        enabled = true,
       },
-      disabled = { -- disable formatting capabilities for the listed language servers
-        -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
-        -- "lua_ls",
-      },
-      timeout_ms = 1000, -- default format timeout
-      -- filter = function(client) -- fully override the default formatting function
-      --   return true
-      -- end
-    },
-    -- enable servers that you already have installed without mason
-    servers = {
-      -- "pyright"
-    },
 
-    capabilities = {
-      offsetEncoding = "utf-8",
+      rust_analyzer = {
+        settings = {
+          ["rust-analyzer"] = {
+            assist = {
+              importEnforceGranularity = true,
+              importPrefix = "crate",
+            },
+            cargo = {
+              extraEnv = { CARGO_PROFILE_RUST_ANALYZER_INHERITS = "dev" },
+              extraArgs = { "--profile", "rust-analyzer" },
+              allFeatures = true,
+            },
+            checkOnSave = {
+              command = "clippy",
+            },
+            inlayHints = {
+              locationLinks = true,
+              enabled = true,
+            },
+            diagnostics = {
+              enable = true,
+              experimental = {
+                enable = true,
+              },
+            },
+          },
+        },
+      },
+
+      clangd = {
+        formatting = {
+          tabSize = 4,
+        },
+
+        capabilities = {
+          offsetEncoding = "utf-8",
+        },
+      },
+      formatting = {
+        tabSize = 4,
+        insertSpaces = false,
+        -- control auto formatting on save
+        format_on_save = true,
+      },
     },
+    -- customize lsp formatting options
   },
 
   -- This function is run last and is a good place to configuring
@@ -73,6 +94,6 @@ return {
     --     ["~/%.config/foo/.*"] = "fooscript",
     --   },
     -- }
-    require("cmake-tools")
+    require "cmake-tools"
   end,
 }

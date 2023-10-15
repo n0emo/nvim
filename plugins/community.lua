@@ -4,8 +4,21 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.julia" },
   { import = "astrocommunity.pack.python" },
+
   { import = "astrocommunity.pack.rust" },
+  {
+    "simrat39/rust-tools.nvim",
+    opts = {
+      tools = {
+        inlay_hints = {
+          auto = false,
+        },
+      },
+    },
+  },
+
   { import = "astrocommunity.pack.cpp" },
+  { import = "astrocommunity.pack.cmake" },
 
   { import = "astrocommunity.pack.java" },
   {
@@ -23,21 +36,33 @@ return {
               --   name = "JavaSE-17",
               --   path = "/usr/lib/jvm/java-17-openjdk/",
               -- }
-            }
-          }
-        }
+            },
+          },
+        },
       },
       on_init = function(client)
-        client.notify('workspace/didChangeConfiguration', { settings = client.config.settings })
-      end
-    }
+        client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+      end,
+    },
   },
 
   { import = "astrocommunity.lsp.lsp-inlayhints-nvim" },
+  {
+    "lvimuser/lsp-inlayhints.nvim",
+    opts = {
+      inlay_hints = {
+        parameter_hints = {
+          show = true,
+        },
+      },
+    },
+  },
 
   -- catppuccin for light mode, kanagawa for dark
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.colorscheme.kanagawa-nvim" },
+
+  { import = "astrocommunity.media.vim-wakatime" },
 
   -- note taking
   { import = "astrocommunity.note-taking.neorg" },
@@ -50,8 +75,8 @@ return {
         ["core.dirman"] = {
           config = {
             workspaces = {
-              notes = "~/notes"
-            }
+              notes = "~/notes",
+            },
           },
         },
       },
@@ -59,11 +84,9 @@ return {
   },
   { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
   {
-       "iamcco/markdown-preview.nvim",
-       ft = { "markdown" },
-       build = "cd app && npm install",
-       init = function()
-         vim.g.mkdp_filetypes = { "markdown" }
-       end,
+    "iamcco/markdown-preview.nvim",
+    ft = { "markdown" },
+    build = "cd app && npm install",
+    init = function() vim.g.mkdp_filetypes = { "markdown" } end,
   },
 }
