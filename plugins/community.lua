@@ -4,6 +4,7 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.julia" },
   { import = "astrocommunity.pack.python" },
+  { import = "astrocommunity.pack.haskell" },
 
   { import = "astrocommunity.pack.rust" },
   {
