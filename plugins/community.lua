@@ -5,6 +5,8 @@ return {
   { import = "astrocommunity.pack.julia" },
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.haskell" },
+  { import = "astrocommunity.pack.typescript" },
+  { import = "astrocommunity.pack.html-css" },
 
   { import = "astrocommunity.pack.rust" },
   {
@@ -58,6 +60,9 @@ return {
       },
     },
   },
+
+  -- AI tools
+  { import = "astrocommunity.completion.tabnine-nvim" },
 
   -- catppuccin for light mode, kanagawa for dark
   { import = "astrocommunity.colorscheme.catppuccin" },
